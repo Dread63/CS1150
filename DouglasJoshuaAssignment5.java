@@ -32,11 +32,11 @@ public class DouglasJoshuaAssignment5 {
 		// Initialzing variable to collect each grade entered
 		int enteredGrade = input.nextInt();
 		
-		while () {
+		while (enteredGrade > 0) {
 			
 			// Creating if statement to check for highest grade
-			if () {
-				
+			if (enteredGrade <= 55 || enteredGrade >= 95) {
+				gradesBelow55Above95 ++;
 			}
 			// Creating if statement to check for lowest grade
 			if () {
