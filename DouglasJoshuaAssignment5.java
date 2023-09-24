@@ -7,7 +7,7 @@ public class DouglasJoshuaAssignment5 {
 		
 		//Initializing scanner
 		Scanner input = new Scanner(System.in);
-		
+		 
 		// Initalizing variables to store the sum of and total number of grades entered
 		int totalGradeSum = 0;
 		int totalGradeCount = 0;
@@ -16,7 +16,7 @@ public class DouglasJoshuaAssignment5 {
 		int highestGrade = 0;
 		int lowestGrade = 100;
 		
-		// Initializing variables to store total count of letter grades
+		// Initializing variables to store total count of letter gradesy
 		int numberOfAGrades = 0;
 		int numberOfBGrades = 0;
 		int numberOfCGrades = 0;
@@ -35,15 +35,16 @@ public class DouglasJoshuaAssignment5 {
 		while (enteredGrade > 0) {
 			
 			// Creating if statement to check for highest grade
-			if (enteredGrade <= 55 || enteredGrade >= 95) {
-				gradesBelow55Above95 ++;
+			if (enteredGrade > highestGrade) {
+				enteredGrade = highestGrade;
 			}
 			// Creating if statement to check for lowest grade
-			if () {
-				
-			}
+			if (enteredGrade < lowestGrade && enteredGrade >= 0) {
+				lowestGrade = enteredGrade;
+			}	
 			// Creating if statement to check for outstanding high/low grades
-			if () {
+			if (enteredGrade <= 55 || enteredGrade >= 95) {
+				gradesBelow55Above95 ++;
 				
 			}
 			// Creating multiway to count number of each letter grade
