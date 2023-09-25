@@ -3,12 +3,24 @@ import java.util.Scanner;
 public class DouglasJoshuaAssignment5 {
 
 	public static void main(String[] args) {
-		//Creating the skeleton of the project
+		
+		/*
+		 * Name: Joshua Douglas
+		 * Class: CS1150 - 002
+		 * Assignment #5
+		 * Due Date: Sep 27, 2023
+		 * Description: This program is designed to receive user input in the form of a list of grades.
+		 * After the user enters the grades they will put a negative number at the end of the list and press
+		 * enter. My program will then process their data in a while loop and output the number of grades
+		 * entered, the average of the exams, the highest and lowest exam, outstanding high or low exams,
+		 * and the number and percentage of each letter grades in the list.
+		 */
+
 		
 		//Initializing scanner
 		Scanner input = new Scanner(System.in);
 		 
-		// Initalizing variables to store the sum of and total number of grades entered
+		// Initializing variables to store the sum of and total number of grades entered
 		int totalGradeSum = 0;
 		int totalGradeCount = 0;
 		
@@ -16,7 +28,7 @@ public class DouglasJoshuaAssignment5 {
 		int highestGrade = 0;
 		int lowestGrade = 100;
 		
-		// Initializing variables to store total count of letter gradesy
+		// Initializing variables to store total count of letter grades
 		int numberOfAGrades = 0;
 		int numberOfBGrades = 0;
 		int numberOfCGrades = 0;
@@ -32,24 +44,22 @@ public class DouglasJoshuaAssignment5 {
 		// Initializing variable to collect each grade entered
 		int enteredGrade = input.nextInt();
 		
-		boolean hasNegative = false; //Flag to check if the line of grades ends with a negative number
-		boolean hasData = false; //Flag to check if any grades were inputed
-		
+		// Loop to process data until a negative number is reached
 		while (enteredGrade >= 0) {
 			
-			// Creating if statement to check for highest grade
+			// If statement to check for highest grade
 			if (enteredGrade > highestGrade) {
 				highestGrade = enteredGrade;
 			}
-			// Creating if statement to check for lowest grade
+			// If statement to check for lowest grade
 			if (enteredGrade < lowestGrade && enteredGrade >= 0) {
 				lowestGrade = enteredGrade;
 			}	
-			// Creating if statement to check for outstanding high/low grades
+			// If statement to check for outstanding high/low grades
 			if (enteredGrade <= 55 || enteredGrade >= 95) {
 				gradesBelow55Above95 ++;
 			}
-			// Creating multiway to count number of each letter grade
+			// Multiway to count the number of each letter grades
 			if (enteredGrade >= 90) {
 				numberOfAGrades ++;
 			}
@@ -70,7 +80,7 @@ public class DouglasJoshuaAssignment5 {
 				numberOfFGrades ++;
 			}
 			
-			// Creating if statement to add totals only if the negative number hasn't been reached
+			// If statement to add totals and repeat loop ONLY if the negative number hasn't been reached
 			if (enteredGrade >= 0) {
 				totalGradeSum = totalGradeSum + enteredGrade;
 				totalGradeCount ++;
@@ -79,7 +89,7 @@ public class DouglasJoshuaAssignment5 {
 			
 		}
 		
-		// Creating if statement to check for errors
+		// If statement to check for errors
 		if (totalGradeCount < 1) {
 			System.out.println("No grades were entered");
 			}
@@ -94,7 +104,11 @@ public class DouglasJoshuaAssignment5 {
 			double percentageOfCGrades = ((double)numberOfCGrades / totalGradeCount * 100);
 			double percentageOfDGrades = ((double)numberOfDGrades / totalGradeCount * 100);
 			double percentageOfFGrades = ((double)numberOfFGrades / totalGradeCount * 100);
-						
+			
+			// Displaying calculation in a list
+			System.out.println("");
+			System.out.println("Your Scores Broken Down");
+			System.out.println("-----------------------");
 			System.out.println("Number of Exams Entered = " + totalGradeCount);
 			System.out.print("Grade average           = ");
 			System.out.printf("%.2f\n", gradeAverage);
@@ -119,6 +133,7 @@ public class DouglasJoshuaAssignment5 {
 			System.out.print("Percentage of F's = ");		
 			System.out.printf("%.2f\n", percentageOfFGrades);
 		}
+		input.close(); // Closing scanner to avoid data leaks
 				
 
 	}
