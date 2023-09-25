@@ -29,14 +29,17 @@ public class DouglasJoshuaAssignment5 {
 		// Prompting the user for input
 		System.out.println("Enter each grade follwed by the enter key");
 		
-		// Initialzing variable to collect each grade entered
+		// Initializing variable to collect each grade entered
 		int enteredGrade = input.nextInt();
 		
-		while (enteredGrade > 0) {
+		boolean hasNegative = false; //Flag to check if the line of grades ends with a negative number
+		boolean hasData = false; //Flag to check if any grades were inputed
+		
+		while (enteredGrade >= 0) {
 			
 			// Creating if statement to check for highest grade
 			if (enteredGrade > highestGrade) {
-				enteredGrade = highestGrade;
+				highestGrade = enteredGrade;
 			}
 			// Creating if statement to check for lowest grade
 			if (enteredGrade < lowestGrade && enteredGrade >= 0) {
@@ -45,43 +48,82 @@ public class DouglasJoshuaAssignment5 {
 			// Creating if statement to check for outstanding high/low grades
 			if (enteredGrade <= 55 || enteredGrade >= 95) {
 				gradesBelow55Above95 ++;
-				
 			}
 			// Creating multiway to count number of each letter grade
-			if () {
-				
+			if (enteredGrade >= 90) {
+				numberOfAGrades ++;
 			}
 			
-			else if () {
-				
+			else if (enteredGrade >= 80) {
+				numberOfBGrades ++;
 			}
 			
-			else if () {
-				
+			else if (enteredGrade >= 70) {
+				numberOfCGrades ++;
 			}
 			
-			else if () {
-				
+			else if (enteredGrade >= 60) {
+				numberOfDGrades ++;
 			}
 			
 			else {
-				
+				numberOfFGrades ++;
 			}
 			
 			// Creating if statement to add totals only if the negative number hasn't been reached
-			if () {
-				
+			if (enteredGrade >= 0) {
+				totalGradeSum = totalGradeSum + enteredGrade;
+				totalGradeCount ++;
+				enteredGrade = input.nextInt();
 			}
-			// Creating if statement to check for errors
-			if () {
-				
-			}
-			// If no errors occured, print the user's output
-			else {
-				
-			}
+			
 		}
+		
+		// Creating if statement to check for errors
+		if (totalGradeCount < 1) {
+			System.out.println("No grades were entered");
+			}
+		
+		// If no errors occurred, print the user's output
+		else {
+					
+			// Calculating averages and percentages for output
+			double gradeAverage = ((double)totalGradeSum / totalGradeCount);
+			double percentageOfAGrades = ((double)numberOfAGrades / totalGradeCount * 100);
+			double percentageOfBGrades = ((double)numberOfBGrades / totalGradeCount * 100);
+			double percentageOfCGrades = ((double)numberOfCGrades / totalGradeCount * 100);
+			double percentageOfDGrades = ((double)numberOfDGrades / totalGradeCount * 100);
+			double percentageOfFGrades = ((double)numberOfFGrades / totalGradeCount * 100);
+						
+			System.out.println("Number of Exams Entered = " + totalGradeCount);
+			System.out.print("Grade average           = ");
+			System.out.printf("%.2f\n", gradeAverage);
+			System.out.println("Highest Exam            = " + highestGrade);
+			System.out.println("Lowest Exam             = " + lowestGrade);
+			System.out.println("Grades <= 55 or >= 95   = " + gradesBelow55Above95);
+			System.out.println("");
+			System.out.println("Number of A's = " + numberOfAGrades);
+			System.out.println("Number of B's = " + numberOfBGrades);
+			System.out.println("Number of C's = " + numberOfCGrades);
+			System.out.println("Number of D's = " + numberOfDGrades);
+			System.out.println("Number of F's = " + numberOfFGrades);
+			System.out.println("");
+			System.out.print("Percentage of A's = ");
+			System.out.printf("%.2f\n", percentageOfAGrades);
+			System.out.print("Percentage of B's = ");
+			System.out.printf("%.2f\n", percentageOfBGrades);
+			System.out.print("Percentage of C's = ");
+			System.out.printf("%.2f\n", percentageOfCGrades);
+			System.out.print("Percentage of D's = ");
+			System.out.printf("%.2f\n", percentageOfDGrades);
+			System.out.print("Percentage of F's = ");		
+			System.out.printf("%.2f\n", percentageOfFGrades);
+		}
+				
 
 	}
 
 }
+
+		
+			
