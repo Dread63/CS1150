@@ -112,8 +112,8 @@ public class DouglasJoshuaAssignment5 {
 			System.out.println("Number of Grades Entered = " + totalGradeCount);
 			System.out.print("Grade average            = ");
 			System.out.printf("%.2f\n", gradeAverage);
-			System.out.println("Highest Exam             = " + highestGrade);
-			System.out.println("Lowest Exam              = " + lowestGrade);
+			System.out.println("Highest Score            = " + highestGrade);
+			System.out.println("Lowest Score             = " + lowestGrade);
 			System.out.println("Grades <= 55 or >= 95    = " + gradesBelow55Above95);
 			System.out.println("");
 			System.out.println("Number of A's = " + numberOfAGrades);
