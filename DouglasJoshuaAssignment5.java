@@ -39,7 +39,7 @@ public class DouglasJoshuaAssignment5 {
 		int gradesBelow55Above95 = 0; 
 		
 		// Prompting the user for input
-		System.out.println("Enter each grade follwed by the enter key");
+		System.out.println("Enter a list of grades, end the list with any negative value:");
 		
 		// Initializing variable to collect each grade entered
 		int enteredGrade = input.nextInt();
@@ -84,7 +84,7 @@ public class DouglasJoshuaAssignment5 {
 			if (enteredGrade >= 0) {
 				totalGradeSum = totalGradeSum + enteredGrade;
 				totalGradeCount ++;
-				enteredGrade = input.nextInt();
+				enteredGrade = input.nextInt(); //This allows the loop to repeat
 			}
 			
 		}
@@ -109,12 +109,12 @@ public class DouglasJoshuaAssignment5 {
 			System.out.println("");
 			System.out.println("Your Scores Broken Down");
 			System.out.println("-----------------------");
-			System.out.println("Number of Exams Entered = " + totalGradeCount);
-			System.out.print("Grade average           = ");
+			System.out.println("Number of Grades Entered = " + totalGradeCount);
+			System.out.print("Grade average            = ");
 			System.out.printf("%.2f\n", gradeAverage);
-			System.out.println("Highest Exam            = " + highestGrade);
-			System.out.println("Lowest Exam             = " + lowestGrade);
-			System.out.println("Grades <= 55 or >= 95   = " + gradesBelow55Above95);
+			System.out.println("Highest Exam             = " + highestGrade);
+			System.out.println("Lowest Exam              = " + lowestGrade);
+			System.out.println("Grades <= 55 or >= 95    = " + gradesBelow55Above95);
 			System.out.println("");
 			System.out.println("Number of A's = " + numberOfAGrades);
 			System.out.println("Number of B's = " + numberOfBGrades);
@@ -123,15 +123,15 @@ public class DouglasJoshuaAssignment5 {
 			System.out.println("Number of F's = " + numberOfFGrades);
 			System.out.println("");
 			System.out.print("Percentage of A's = ");
-			System.out.printf("%.2f\n", percentageOfAGrades);
+			System.out.printf("%.2f%%\n", percentageOfAGrades);
 			System.out.print("Percentage of B's = ");
-			System.out.printf("%.2f\n", percentageOfBGrades);
+			System.out.printf("%.2f%%\n", percentageOfBGrades);
 			System.out.print("Percentage of C's = ");
-			System.out.printf("%.2f\n", percentageOfCGrades);
+			System.out.printf("%.2f%%\n", percentageOfCGrades);
 			System.out.print("Percentage of D's = ");
-			System.out.printf("%.2f\n", percentageOfDGrades);
+			System.out.printf("%.2f%%\n", percentageOfDGrades);
 			System.out.print("Percentage of F's = ");		
-			System.out.printf("%.2f\n", percentageOfFGrades);
+			System.out.printf("%.2f%%\n", percentageOfFGrades);
 		}
 		input.close(); // Closing scanner to avoid data leaks
 				
