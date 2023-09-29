@@ -3,7 +3,9 @@ import java.util.Scanner;
 public class Chapter5 {
 
 	public static void main(String[] args) {
-//A GRADE COUNT / TOTAL GRADE COUNT
+
+		/*
+		//A GRADE COUNT / TOTAL GRADE COUNT
 		
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter each grade follwed by the enter key");
@@ -79,7 +81,60 @@ public class Chapter5 {
 			System.out.println("Highest Grade = " + highestGrade + " Lowest Grade = " + lowestGrade);
 			System.out.printf("%.2f\n", gradeAverage);
 		}
-			
+		*/
+		
+		/*
+		int sum1 = 0;
+		int sum2 = 0;
+		for (int i = 0; i < 10; ++i) {
+			sum1 += i;
+		}
+		for (int i = 0; i <10; i++) {
+			sum2 += i;
+		}
+		System.out.println(sum1);
+		System.out.println(sum2);
+		*/
+		
+		/*
+		for (int num = 0; num < 100; ++num, System.out.println(num)); {
+		}
+		*/
+		
+		/*
+		Scanner input = new Scanner(System.in);
+		int number, sum = 0, count;
+		
+		for (count = 0; count < 5; count++) {
+			number = input.nextInt();
+			sum += number;
+		}
+		System.out.println(sum);
+		System.out.println(count);
+		*/
+		
+		/*
+		long sum = 0;
+		int i = 0;
+		
+		while (i <= 100) {
+			sum += i;
+			i++;
+		}
+		System.out.println(sum);
+		System.out.println(i);
+		*/
+		
+		long sum = 0;
+		int i = 0;
+		
+		do {
+			sum += i;
+			i++;
+		} while (i <=100);
+		System.out.println(sum);
+		System.out.println(i);
+		
 	}
 		
 		
