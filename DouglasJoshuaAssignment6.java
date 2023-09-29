@@ -5,8 +5,8 @@ public class DouglasJoshuaAssignment6 {
 	public static void main(String[] args) {
 		// 
 		
-		int numberOfWins = 0;
-		int numberOfLosses = 0;
+		int numberOfCreditsWon = 0;
+		int numberOfCreditsLost = 0;
 		
 		Scanner input = new Scanner(System.in);
 		
@@ -18,19 +18,21 @@ public class DouglasJoshuaAssignment6 {
 			initialDeposit = input.nextDouble();
 		}
 		
+		double remainingCredits = initialDeposit;
+		
 		System.out.println("--------------------------------------");
 		System.out.println("SEVEN           SEVEN            SEVEN");
 		System.out.println("--------------------------------------");
 		System.out.println("");
 		System.out.println("--------------------------------------");
-		System.out.println("|Credits " + initialDeposit + "   Won " + numberOfWins + "   Lost " + numberOfLosses);
+		System.out.println("|Credits " + initialDeposit + "   Won " + numberOfCreditsWon + "   Lost " + numberOfCreditsLost);
 		System.out.println("");
 		System.out.println("How many credits would you like to bet?");
 		
 		
 		int creditsGambled = input.nextInt();
 			
-		while (creditsGambled < 1 || creditsGambled > initialDeposit) {
+		while (creditsGambled < 1 || creditsGambled > remainingCredits) {
 			if (creditsGambled < 1) {
 				System.out.println("ERROR: Cannot bet a negative amount of credits, please enter a valid amount of credits");
 				creditsGambled = input.nextInt();	
@@ -40,41 +42,140 @@ public class DouglasJoshuaAssignment6 {
 				creditsGambled = input.nextInt();
 			}
 		}
-			
+		
 		System.out.println("Ready to spin? Type Y for yes or N to cancel");
 		String chosenMenuOption = input.next();
+		
+		for (; (creditsGambled >= 1 && creditsGambled <= remainingCredits && chosenMenuOption.equals("Y")); chosenMenuOption = input.next()) {
 			
-		while (creditsGambled >=1 && creditsGambled <= initialDeposit && chosenMenuOption.equals("Y")) {
+			String selectedTempWord = "";
+			String selectedWord1 = "";
+			String selectedWord2 = "";
+			String selectedWord3 = "";
 			
-			while ((initialDeposit - creditsGambled) < 0  && chosenMenuOption.equals("Y")) {
+			
+			for (int numberOfSpins = 1; numberOfSpins <= creditsGambled; numberOfSpins++) {
+				
+				for (int i = 0; i < 3; i++) {
+				
+					int randomNumber = 1 + (int)(Math.random() * 5);
+				
+					switch (randomNumber) {
+				
+						case 1:
+							selectedTempWord = "Seven";
+							if (i == 0) {
+								selectedWord1 = selectedTempWord;
+							}
+							if (i == 1) {
+								selectedWord2 = selectedTempWord;
+							}
+							if (i == 2) {
+								selectedWord3 = selectedTempWord;
+							}
+							break;
+						case 2:
+							selectedTempWord = "Cherry";
+							if (i == 0) {
+								selectedWord1 = selectedTempWord;
+							}
+							if (i == 1) {
+								selectedWord2 = selectedTempWord;
+							}
+							if (i == 2) {
+								selectedWord3 = selectedTempWord;
+							}
+							break;
+						case 3:
+							selectedTempWord = "Bell";
+							if (i == 0) {
+								selectedWord1 = selectedTempWord;
+							}
+							if (i == 1) {
+								selectedWord2 = selectedTempWord;
+							}
+							if (i == 2) {
+								selectedWord3 = selectedTempWord;
+							}
+							break;
+						case 4:
+							selectedTempWord = "Bar";
+							if (i == 0) {
+								selectedWord1 = selectedTempWord;
+							}
+							if (i == 1) {
+								selectedWord2 = selectedTempWord;
+							}
+							if (i == 2) {
+								selectedWord3 = selectedTempWord;
+							}
+							break;
+						case 5:
+							selectedTempWord = "Plum";
+							if (i == 0) {
+								selectedWord1 = selectedTempWord;
+							}
+							if (i == 1) {
+								selectedWord2 = selectedTempWord;
+							}
+							if (i == 2) {
+								selectedWord3 = selectedTempWord;
+							}
+							break;
+						default:
+							System.out.println("ERROR: Unknown random data type, please restart!");
+							
+					}
+				
+				}
+				
+				if (selectedWord1.equals(selectedWord2) && selectedWord2.equals(selectedWord3)) {
+					numberOfCreditsWon = 3;
+					remainingCredits += 3;
+				}
+				
+				if ((selectedWord1.equals(selectedWord2) && !selectedWord1.equals(selectedWord3)) || 
+					(selectedWord1.equals(selectedWord3) && !selectedWord1.equals(selectedWord2)) ||
+					(selectedWord2.equals(selectedWord3) && !selectedWord2.equals(selectedWord1))) {
+					
+					numberOfCreditsWon = 2;
+					remainingCredits += 2;		
+				}
+				
+				if (!selectedWord1.equals(selectedWord2) && !selectedWord2.equals(selectedWord3) &&
+					!selectedWord1.equals(selectedWord3)) {
+					
+					numberOfCreditsWon = 0;
+					remainingCredits -= 1;
+					numberOfCreditsLost += 1;
+					
+				}
+					
+				System.out.println("--------------------------------------");
+				System.out.println(selectedWord1 + "      " + selectedWord2 +"      " + selectedWord3);
+				System.out.println("--------------------------------------");
+				System.out.println("");
+				System.out.println("--------------------------------------");
+				System.out.println("|Credits " + remainingCredits + "   Won " + numberOfCreditsWon + "   Lost " + numberOfCreditsLost);
+				System.out.println("");
+			}
+		
+			while ((remainingCredits - creditsGambled) < 0) {
 				System.out.println("Insufficient Credits, try again");
 				creditsGambled = input.nextInt();
 			}
-			
-			for (creditsGambled; (creditsGambled <= initialDeposit && creditsGambled >=1 && chosenMenuOption.equals("Y"); initialDeposit = initialDeposit - creditsGambled; {
-				System.out.println("Slot Machine runs");
-				System.out.println("You have " + initialDeposit + " credits left, how many do you want to bet?");
+		
+			if (remainingCredits > 0) {
+				
+				System.out.println("You have " + remainingCredits + " credits left, how many do you want to bet?");
 				creditsGambled = input.nextInt();
-				System.out.println("Spin (Y/N)?");
-				chosenMenuOption = input.next();
 			}
-			
-			
-		/*
-			initialDeposit = initialDeposit - creditsGambled;
-			if (initialDeposit > 0) {
-					
-			System.out.println("You have " + initialDeposit + " credits left, how many do you want to bet?");
-			creditsGambled = input.nextInt();
+		
 			System.out.println("Spin (Y/N)?");
-			chosenMenuOption = input.next();
-			}
-			*/
+			
 		}
 		
 		System.out.println("No credits left");
-		
 
 	}
-
 }
