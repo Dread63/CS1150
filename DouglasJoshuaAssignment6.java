@@ -46,7 +46,7 @@ public class DouglasJoshuaAssignment6 {
 		System.out.println("Ready to spin? Type Y for yes or N to cancel");
 		String chosenMenuOption = input.next();
 		
-		for (; (creditsGambled >= 1 && creditsGambled <= remainingCredits && chosenMenuOption.equals("Y")); chosenMenuOption = input.next()) {
+		while ((creditsGambled >= 1 && creditsGambled <= remainingCredits && chosenMenuOption.equals("Y"))) {
 			
 			String selectedTempWord = "";
 			String selectedWord1 = "";
@@ -130,7 +130,7 @@ public class DouglasJoshuaAssignment6 {
 				}
 				
 				if (selectedWord1.equals(selectedWord2) && selectedWord2.equals(selectedWord3)) {
-					numberOfCreditsWon = 3;
+					numberOfCreditsWon += 3;
 					remainingCredits += 3;
 				}
 				
@@ -138,14 +138,14 @@ public class DouglasJoshuaAssignment6 {
 					(selectedWord1.equals(selectedWord3) && !selectedWord1.equals(selectedWord2)) ||
 					(selectedWord2.equals(selectedWord3) && !selectedWord2.equals(selectedWord1))) {
 					
-					numberOfCreditsWon = 2;
+					numberOfCreditsWon += 2;
 					remainingCredits += 2;		
 				}
 				
 				if (!selectedWord1.equals(selectedWord2) && !selectedWord2.equals(selectedWord3) &&
 					!selectedWord1.equals(selectedWord3)) {
 					
-					numberOfCreditsWon = 0;
+					numberOfCreditsWon += 0;
 					remainingCredits -= 1;
 					numberOfCreditsLost += 1;
 					
@@ -156,13 +156,8 @@ public class DouglasJoshuaAssignment6 {
 				System.out.println("--------------------------------------");
 				System.out.println("");
 				System.out.println("--------------------------------------");
-				System.out.println("|Credits " + remainingCredits + "   Won " + numberOfCreditsWon + "   Lost " + numberOfCreditsLost);
+				System.out.println("|Credits " + remainingCredits + "   |Won Credits " + numberOfCreditsWon + "   |Lost Spins " + numberOfCreditsLost);
 				System.out.println("");
-			}
-		
-			while ((remainingCredits - creditsGambled) < 0) {
-				System.out.println("Insufficient Credits, try again");
-				creditsGambled = input.nextInt();
 			}
 		
 			if (remainingCredits > 0) {
@@ -170,12 +165,30 @@ public class DouglasJoshuaAssignment6 {
 				System.out.println("You have " + remainingCredits + " credits left, how many do you want to bet?");
 				creditsGambled = input.nextInt();
 			}
-		
-			System.out.println("Spin (Y/N)?");
 			
+			if (remainingCredits != 0) {
+				
+				while (creditsGambled > remainingCredits) {
+					System.out.println("You don't have that many credits, try again");
+					creditsGambled = input.nextInt();
+				}
+			
+				while (creditsGambled < 0) {
+					System.out.println("Cannot bet a negative number of credits, try again");
+					creditsGambled = input.nextInt();
+				}
+				
+				System.out.println("Spin (Y/N)?");
+				chosenMenuOption = input.next();
+			}
+				
 		}
 		
-		System.out.println("No credits left");
-
+		System.out.println("Game Over!");
+		System.out.println("Started With $ " + initialDeposit);
+		System.out.println("Winnings     $ " + numberOfCreditsWon);
+		System.out.println("Lost         $ " + numberOfCreditsLost);
+		System.out.println("Dispensing   $ " + (initialDeposit + numberOfCreditsWon - numberOfCreditsLost));
+		
 	}
 }
