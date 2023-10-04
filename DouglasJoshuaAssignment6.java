@@ -20,12 +20,14 @@ public class DouglasJoshuaAssignment6 {
 		// Initializing variables to be used later
 		int numberOfCreditsWon = 0;
 		int numberOfCreditsLost = 0;
+		final int NUMBER_OF_IMAGES = 3;
 		
 		// Initializing scanner to collect user input
 		Scanner input = new Scanner(System.in);
 		
 		// Prompting and collection user input
-		System.out.println("Enter initial deposit");
+		System.out.println("Starting slot machine simulation....");
+		System.out.println("Enter initial deposit to start slot machine simulation");
 		double initialDeposit = input.nextDouble();
 		
 		// Verifying that the inputed currency was in whole dollars only
@@ -38,7 +40,7 @@ public class DouglasJoshuaAssignment6 {
 		// This variable will be used to track credits without changing the initial deposit amount
 		double remainingCredits = initialDeposit;
 		
-		// Displaying the slot machine to the user and collectin their desired bet
+		// Displaying the slot machine to the user and collecting their desired bet
 		System.out.println("-----------------------------------------");
 		System.out.println("SEVEN            SEVEN              SEVEN");
 		System.out.println("-----------------------------------------");
@@ -81,10 +83,13 @@ public class DouglasJoshuaAssignment6 {
 			for (int numberOfSpins = 1; numberOfSpins <= creditsGambled; numberOfSpins++) {
 				
 				// Nested for loop which ensures that three unique words are generated
-				for (int i = 0; i < 3; i++) {
+				for (int i = 0; i < NUMBER_OF_IMAGES; i++) {
 				
 					int randomNumber = 1 + (int)(Math.random() * 5); // Generates random number 1-5 which will
 																	// be tied to a slot image (word)
+					
+					// I met with Prof. Mickey and discussed the following switch statement, and she said it looked okay
+					// eventhough it doesn't use 3 switch statements like her example does
 					switch (randomNumber) {
 				
 						// The following if statements ensure that the final selected words won't be
@@ -101,6 +106,7 @@ public class DouglasJoshuaAssignment6 {
 								selectedWord3 = selectedTempWord;
 							}
 							break;
+							
 						case 2:
 							selectedTempWord = "Cherry";
 							if (i == 0) {
@@ -113,6 +119,7 @@ public class DouglasJoshuaAssignment6 {
 								selectedWord3 = selectedTempWord;
 							}
 							break;
+							
 						case 3:
 							selectedTempWord = "Bell";
 							if (i == 0) {
@@ -125,6 +132,7 @@ public class DouglasJoshuaAssignment6 {
 								selectedWord3 = selectedTempWord;
 							}
 							break;
+							
 						case 4:
 							selectedTempWord = "Bar";
 							if (i == 0) {
@@ -137,6 +145,7 @@ public class DouglasJoshuaAssignment6 {
 								selectedWord3 = selectedTempWord;
 							}
 							break;
+							
 						case 5:
 							selectedTempWord = "Plum";
 							if (i == 0) {
@@ -164,22 +173,19 @@ public class DouglasJoshuaAssignment6 {
 				}
 				
 				// Statement to check if only two slot images (words) match and to update respective variables
-				if ((selectedWord1.equals(selectedWord2) && !selectedWord1.equals(selectedWord3)) || 
-					(selectedWord1.equals(selectedWord3) && !selectedWord1.equals(selectedWord2)) ||
-					(selectedWord2.equals(selectedWord3) && !selectedWord2.equals(selectedWord1))) {
+				else if (selectedWord1.equals(selectedWord2) || selectedWord1.equals(selectedWord3) ||
+					selectedWord2.equals(selectedWord3)) {
 					
 					numberOfCreditsWon += 2;
 					remainingCredits += 2;		
 				}
 				
 				// Statement to check if no slot images (words) math and update respective varaibles
-				if (!selectedWord1.equals(selectedWord2) && !selectedWord2.equals(selectedWord3) &&
-					!selectedWord1.equals(selectedWord3)) {
+				else {
 					
 					numberOfCreditsWon += 0;
 					remainingCredits -= 1;
 					numberOfCreditsLost += 1;
-					
 				}
 				
 				// Displaying slot machine results for the user
@@ -220,7 +226,7 @@ public class DouglasJoshuaAssignment6 {
 				}
 				
 			}
-				
+			
 		}
 		
 		// Displaying the final results of the users gambling experience
@@ -231,4 +237,5 @@ public class DouglasJoshuaAssignment6 {
 		System.out.printf("Dispensing   $ %.0f%n", (initialDeposit + numberOfCreditsWon - numberOfCreditsLost));
 		
 	}
+	
 }
