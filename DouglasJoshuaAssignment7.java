@@ -1,33 +1,34 @@
-// ASSIGNMENT DESCRIPTION
+/*
+* Name: Joshua Douglas
+* Class: CS1150 - 002
+* Assignment #7
+* Due Date: Oct 11, 2023
+* Description: This program calculates a user's BMR by utilizing their specified gender, weight, height, and age. Then, it will use
+* the collected data to calculate the total number of calories the user needs based off of five different levels of activity. After
+* using methods to store and calculate data, it will print the result in an easy to understand and nicely formatted table.
+*/
 import java.util.Scanner;
 public class DouglasJoshuaAssignment7 {
 	public static void main(String[] args) {
+
 		// Variable to exit the program if the user selects N when propmpted to run again
 		boolean wantsToContinue = true;
-		
-		// Entering main loop with the condition we made above
+
+		// Main loops of the program
 		while (wantsToContinue) {
 			
-			// Initializing scanner
 			Scanner input = new Scanner(System.in);
 			
 			// Collecting user input for gender, age, weight, and height
-			System.out.println("Select gender, type M for male and F for female");
 			char selectedGender = getGender(input);
-			
-			System.out.println("Please input your age in years (1-100)");
 			int selectedAge = getAge(input);
-			
-			System.out.println("Please input your weight in pounds");
-			double selectedWeight = getWeight(input);
-			
-			System.out.println("Please enter your total height in feet and inches");
 			int selectedHeight = getHeight(input);
+			double selectedWeight = getWeight(input);
 			
 			// Calling on computeBMR to use our gathered input to compute the user specific BMR
 			double calculatedBMR = computeBMR(selectedGender, selectedAge, selectedHeight, selectedWeight);
 
-			// Calling on displayResults and handing it the calculatedBMR
+			// Calling on displayResults and handing it calculatedBMR
 			displayResults(calculatedBMR);
 			
 			// Checking if the user wants to execute another iteration or exit the program
@@ -36,13 +37,16 @@ public class DouglasJoshuaAssignment7 {
 		
 	}
 	
-	public static char getGender(Scanner input) {
+	// Obtain gender from user and ensure input is valid
+	public static char getGender(Scanner input) { 
 		
-		// In order to return a char, we collect the input as a string, then call on charAt
-		String selectedGender = input.next();
+		System.out.print("Select gender, type M for male and F for female: ");
 
+		// In order to return a char, we collect the input as a string, then call on charAt
 		// Converted to lowercase to ensure the user doesn't get an error if they type m instead of M
+		String selectedGender = input.next();
 		char gender = Character.toLowerCase(selectedGender.charAt(0));
+		System.out.println("");
 		
 		// Simple error handling to ensure a valid gender is chosen
 		while (gender != 'm' && gender != 'f') {
@@ -51,44 +55,51 @@ public class DouglasJoshuaAssignment7 {
 			gender = selectedGender.charAt(0);
 		}
 		
-		return gender; // Returning gender to selectedGender in the form of a Char
-		
+		return gender;
 	}
 	
-	public static int getAge(Scanner input) {
+	// Obtain age from user and ensure input is valid
+	public static int getAge(Scanner input) { 
+
+		System.out.print("Please input your age in years (1-100): ");
 		
-		int age = input.nextInt(); // Collecting age in form of an Int
+		int age = input.nextInt();
+		System.out.println("");
 		
 		// Simple error handling to ensure a valid age between 1 and 100 is chosen
 		while (age <= 0 || age > 100) {
 			System.out.println("Invalid age, please choose a whole number between 1 and 100");
 			age = input.nextInt();
 		}
-		
-		return age; // Returning age to selectedAge as an Int
+
+		return age;
 	}
 	
-	public static int getHeight(Scanner input) {
+	// Obtain height from user and ensure input is valid
+	public static int getHeight(Scanner input) {  
 		
+		System.out.println("Please enter your total height in feet and inches");
+
 		// Declaring variables outside of do-while loop to ensure working scope
 		int heightInFeet = 0;
 		int heightInInches = 0;
 		int totalHeightInInches = 0;
 		
-		// Prompts for feet and inches individuall as to not confuse the user
+		// Prompts for feet and inches individually as to not confuse the user
 		do {
 			System.out.print("Feet:");
 			heightInFeet = input.nextInt();
 			
 			System.out.print("Inches:");
 			heightInInches = input.nextInt();
-			System.out.println(""); // This alongside line 81 is used to allow input on the same line as the prompt
-									  // but still move to the next line (purely for visual cleanliness)
+			System.out.println("");
 
 			// Simple error handling in case a user enters inches larger than 12 (which would be a foot)						  
-			while (heightInInches > 12) {
-				System.out.println(heightInInches + " Is not a valid input, please input a value between 0 and 12");
+			while (heightInInches > 12 || heightInInches < 0) {
+				System.out.println("Cannot input " + heightInInches +" inches, please input a value between 0 and 12");
+				System.out.print("Inches:");
 				heightInInches = input.nextInt();
+				System.out.println("");
 			}
 			
 			// Calculating the total height in inches to be used later in calculating BMR
@@ -100,17 +111,20 @@ public class DouglasJoshuaAssignment7 {
 			}
 			
 		} 
-		// Condition to exit the loop once done (this condition is repeated from line 96 to ensure the user is informed of the error)
+		// Condition to exit the loop once done (this condition is repeated from line 101 to ensure the user is informed of the error)
 		while (totalHeightInInches < 12 || totalHeightInInches > 107);
 		
-		return totalHeightInInches; // Returns totalHeightInInches to selectedHeight in form of an Int
+		return totalHeightInInches;
 	}
-	
-	public static double getWeight(Scanner input) {
+
+	// Obtain weight from user and ensure input is valid
+	public static double getWeight(Scanner input) { 
+
+		System.out.print("Please input your weight in pounds: ");
 		
-		// Initializing variable for scope and collecting its value via scanner
-		double totalWeight = 0;
-		totalWeight = input.nextDouble();
+		// Initializing variable for scope
+		double totalWeight = input.nextDouble();
+		System.out.println("");
 		
 		// Simple error handling to ensure a positive weight is entered
 		while (totalWeight <= 0) {
@@ -118,40 +132,42 @@ public class DouglasJoshuaAssignment7 {
 			totalWeight = input.nextDouble();	
 		}
 		
-		return totalWeight; // Returns totalWeight to selectedWeight in form of a double
-		
+		return totalWeight; 
 	}
-	
-	public static boolean continueProcessing(Scanner input) {
+
+	// Prompts user to repeat the program or terminate
+	public static boolean continueProcessing(Scanner input) { 
 		
 		// Intializing variables to ensure scope within the whole method
 		boolean wantsToContinue;
 		String selectedMenuOption = "";
 		
 		// Propmts the user to change wantsToContinue to false
-		System.out.println("Would you like to perform another calorie calculation (Y/N)?");
+		System.out.print("Would you like to perform another calorie calculation (Y/N): ");
 		
 		selectedMenuOption = input.next();
+		char selectedMenuOptionIgnoreCase = Character.toLowerCase(selectedMenuOption.charAt(0)); // Change to lowercase to avoid errors
+		System.out.println("");
 		
 		// Simple error handling to ensure their input is either yes or no
-		while (!selectedMenuOption.equals("Y") && !selectedMenuOption.equals("N")) {
+		while (selectedMenuOptionIgnoreCase != 'y' && selectedMenuOptionIgnoreCase != 'n') {
 			System.out.println("Invalid menu selection, please choose Y or N");
 			selectedMenuOption = input.next();
 		}
 		
-		if (selectedMenuOption.equals("Y")) { // The user wants to continue
-			wantsToContinue = true; // Condition for main method stays true
+		if (selectedMenuOptionIgnoreCase == 'y') { // The user wants to re-run the program
+			wantsToContinue = true; 
 		}
 		else { // The user wants to exit the program
-			wantsToContinue = false; // Condition for main method is false which ends the program
+			wantsToContinue = false;
 		}
 		
-		return wantsToContinue; // Returns wantsToContinue to wantsToContinue(in main) as a boolean
-	
+		return wantsToContinue;
 	}
 	
+	// Calculate's user's BMR using data collected in previous methods
 	public static double computeBMR (char gender, double age, double height, double weight) {
-		
+		   																					 	
 		// Initialize variable to ensure scope within entire method
 		double bmr = 0;
 		
@@ -167,72 +183,84 @@ public class DouglasJoshuaAssignment7 {
 			break;
 		}
 		
-		return bmr; // Returns bmr to calculatedBMR in the form of a double
+		return bmr;
 	}
 	
+	// Calculating the required amount of calories based on the user's BMR and possible activity level
 	public static double computeCaloriesWithActivity(double bmr, int activityLevel) {
 		
 		// Initializing variable to ensure scope within entire method
-		double selectedActivityLevel = 0;
+		double requiredCalorieCount = 0;
+
+		// Delcaring constants for activity levels to avoid "magic numbers"
+		final double SEDENTARY = 1.2;
+		final double LIGHTLY_ACTIVE = 1.375;
+		final double MODERATELY_ACTIVE = 1.55;
+		final double VERY_ACTIVE = 1.725;
+		final double EXTRA_ACTIVE = 1.9;
 		
-		// Switch statement to calculate required calories based on different activity levels
+		// Switch statement to calculate required calories based on different levels of activity
 		switch (activityLevel) {
 		
-		case 0: // In method displayResults, 0 is defined as SEDENTARY (ln.201)
-			selectedActivityLevel = (1.2 * bmr);
+		case 1:
+			requiredCalorieCount = (SEDENTARY * bmr);
 			break;
-		case 1: // In method displayResults, 1 is defined as LIGHTLY_ACTIVE (ln.202)
-			selectedActivityLevel = (1.375 * bmr);
+		case 2:
+			requiredCalorieCount = (LIGHTLY_ACTIVE * bmr);
 			break;
-		case 2: // In method displayResults, 2 is defined as MODERATELY_ACTIVE (ln.203)
-			selectedActivityLevel = (1.55 * bmr);
+		case 3: 
+			requiredCalorieCount = (MODERATELY_ACTIVE * bmr);
 			break;
-		case 3: // In method displayResults, 3 is defined as VERY_ACTIVE (ln.204)
-			selectedActivityLevel = (1.725 * bmr);
+		case 4:
+			requiredCalorieCount = (VERY_ACTIVE * bmr);
 			break;
-		case 4: // In method displayResults, 4 is defined as EXTRA_ACTIVE (ln.205)
-			selectedActivityLevel = (1.9 * bmr);
+		case 5:
+			requiredCalorieCount = (EXTRA_ACTIVE * bmr);
 			break;
 		}
 		
-		return selectedActivityLevel; // Returns selectedActivityLevel to calculatedActivity (ln.207-211) as a double
+		return requiredCalorieCount; // Returns requiredCalorieCount to calculatedActivity as a double
 	}
 	
+	// Display results of all calculations in a nicely formatted table for the user
 	public static void displayResults(double bmr) {
-		
-		// Delcaring constants for activity levels to avoid "magic numbers"
-		final int SEDENTARY = 0;
-		final int LIGHTLY_ACTIVE = 1;
-		final int MODERATELY_ACTIVE = 2;
-		final int VERY_ACTIVE = 3;
-		final int EXTRA_ACTIVE = 4;
-		
-		// Initializing variables to store our calculated activity level using user's BMR
-		double calculatedSedentaryActivity = computeCaloriesWithActivity(bmr, SEDENTARY);
-		double calculatedLightActivity = computeCaloriesWithActivity(bmr, LIGHTLY_ACTIVE);
-		double calculatedModerateActivity = computeCaloriesWithActivity(bmr, MODERATELY_ACTIVE);
-		double calculatedVeryActivity = computeCaloriesWithActivity(bmr, VERY_ACTIVE);
-		double calculatedExtraActivity = computeCaloriesWithActivity(bmr, EXTRA_ACTIVE);
-		
+
 		// Displaying final calculated results for BMR and calories based on activity
 		System.out.println("            *********************************");
 		System.out.printf("                  Your BMR is %.2f%n", bmr);
 		System.out.println("            *********************************");
-		
+
 		System.out.println("---------------------------------------------------------");
 		System.out.println("Activity Level                                 Calories  ");
 		System.out.println("---------------------------------------------------------");
-		System.out.printf("Sedentary - little or no exercise             | %.2f%n", calculatedSedentaryActivity);
-		System.out.println("");
-		System.out.printf("Lightly active - Exercise 1-3 times/week      | %.2f%n", calculatedLightActivity);
-		System.out.println("");
-		System.out.printf("Moderately active - Exercise 4-5 times/week   | %.2f%n", calculatedModerateActivity);
-		System.out.println("");
-		System.out.printf("Very active - Intense exercise 6-7 times/week | %.2f%n", calculatedVeryActivity);
-		System.out.println("");
-		System.out.printf("Extra active - Very intense work daily        | %.2f%n", calculatedExtraActivity);
-		System.out.println("---------------------------------------------------------");
+		
+		// Prints the required amount of calories per activity level (1-5)
+		for (int activityLevel = 1; activityLevel <= 5; activityLevel++) {
 
+			double calories = computeCaloriesWithActivity(bmr, activityLevel);
+
+			switch (activityLevel) {
+
+				case 1:
+					System.out.printf("Sedentary - little or no exercise             | %.2f%n", calories);
+					break;
+				case 2:
+					System.out.printf("Lightly active - Exercise 1-3 times/week      | %.2f%n", calories);
+					break;
+				case 3:
+					System.out.printf("Moderately active - Exercise 4-5 times/week   | %.2f%n", calories);
+					break;
+				case 4:
+					System.out.printf("Very active - Intense exercise 6-7 times/week | %.2f%n", calories);
+					break;
+				case 5:
+					System.out.printf("Extra active - Very intense work daily        | %.2f%n", calories);
+					break;
+			}
+		} 
+
+		System.out.println("---------------------------------------------------------");
+		System.out.println("");
 	}
 
 }
