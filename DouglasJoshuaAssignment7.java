@@ -50,9 +50,10 @@ public class DouglasJoshuaAssignment7 {
 		
 		// Simple error handling to ensure a valid gender is chosen
 		while (gender != 'm' && gender != 'f') {
-			System.out.println("Invalid gender choice please select M for male and F for female");
+			System.out.print("Invalid gender choice please select M for male and F for female: ");
 			selectedGender = input.next();
 			gender = selectedGender.charAt(0);
+			System.out.println("");
 		}
 		
 		return gender;
@@ -68,8 +69,9 @@ public class DouglasJoshuaAssignment7 {
 		
 		// Simple error handling to ensure a valid age between 1 and 100 is chosen
 		while (age <= 0 || age > 100) {
-			System.out.println("Invalid age, please choose a whole number between 1 and 100");
+			System.out.print("Invalid age, please choose a whole number between 1 and 100: ");
 			age = input.nextInt();
+			System.out.println("");
 		}
 
 		return age;
@@ -219,7 +221,7 @@ public class DouglasJoshuaAssignment7 {
 			break;
 		}
 		
-		return requiredCalorieCount; // Returns requiredCalorieCount to calculatedActivity as a double
+		return requiredCalorieCount;
 	}
 	
 	// Display results of all calculations in a nicely formatted table for the user
