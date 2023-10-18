@@ -152,7 +152,7 @@ public class DouglasJoshuaAssignment7 {
 		System.out.println("");
 		
 		// Simple error handling to ensure their input is either yes or no
-		while (selectedMenuOptionIgnoreCase != 'y' && selectedMenuOptionIgnoreCase != 'n') {
+		while (selectedMenuOptionIgnoreCase != 'y' || selectedMenuOptionIgnoreCase != 'n') {
 			System.out.println("Invalid menu selection, please choose Y or N");
 			selectedMenuOption = input.next();
 		}
