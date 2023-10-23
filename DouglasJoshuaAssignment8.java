@@ -1,6 +1,7 @@
 public class DouglasJoshuaAssignment8 {
     public static void main(String[] args) {
         
+        // Initializing arrays and array data to be used throughout program
         String[] courseNames = new String[5];
         String[] letterGrades = new String[5];
         int[] creditHours = new int[5];
@@ -12,9 +13,9 @@ public class DouglasJoshuaAssignment8 {
         courseNames[4] = "English";
 
         letterGrades[0] = "A";
-        letterGrades[1] = "A-";
-        letterGrades[2] = "B";
-        letterGrades[3] = "C+";
+        letterGrades[1] = "C+";
+        letterGrades[2] = "A-";
+        letterGrades[3] = "B";
         letterGrades[4] = "C-";
 
         creditHours[0] = 3;
@@ -23,27 +24,63 @@ public class DouglasJoshuaAssignment8 {
         creditHours[3] = 3;
         creditHours[4] = 3;
 
+        // Calling on display results which will print the entire output for the user
+        display(courseNames, letterGrades, creditHours);
 
-        displayResults(courseNames, letterGrades, creditHours);
+        // Calling on methods to calculate data and store the returned value in variables
         int sumOfCredits = computeSumOfCredits(creditHours);
-        double totalGradePoints = computerTotalGradePoints(letterGrades, creditHours);
 
-        System.out.println("Your total grade points = " + totalGradePoints);
+        double totalGradePoints = computeTotalGradePoints(letterGrades, creditHours);
 
+        double totalGPA = totalGradePoints / sumOfCredits;
+
+        String gradeWorthMostPoints = "" + courseNames[findGradeWorthMostPoints(letterGrades, creditHours)] + " " + letterGrades[findGradeWorthMostPoints(letterGrades, creditHours)];
+        
+        // Displaying the output of the calculated data
+        System.out.println("Total Credits: " + sumOfCredits);
+        System.out.println();
+        System.out.printf("Total Grade Points: %4.2f\n", totalGradePoints);
+        System.out.println();
+        System.out.printf("Overall GPA: %4.2f\n", totalGPA);
+        System.out.println();
+        System.out.println("Grade worth most points: " + gradeWorthMostPoints);
+        System.out.println();
+        System.out.println();
+
+        // Array and data to be used in second half of assignment 8
+        Dog[] dogArray = new Dog[5];
+
+        Dog dog1 = new Dog("Rover", "woof woof");
+        Dog dog2 = new Dog("Max", "arf arf arf");
+        Dog dog3 = new Dog("Tiny", "yap yap yap");
+        Dog dog4 = new Dog("Trooper", "ruff ruff ruff");
+        Dog dog5 = new Dog("Magoo", "bow wow bow wow");
+
+        dogArray[0] = dog1;
+        dogArray[1] = dog2;
+        dogArray[2] = dog3;
+        dogArray[3] = dog4;
+        dogArray[4] = dog5;
+
+        // Calls on makeDogsBark to display the output of our previously initialized array
+        makeDogsBark(dogArray);
     }
 
-    public static void displayResults(String[] courses, String[] grades, int[] credits) {
+    // This method displays the courses, grades, credit hours, then it calls on other methods to calculate total credits, total grade points, highest grade, and GPA
+    public static void display(String[] courses, String[] grades, int[] credits) {
 
         System.out.println("--------------------------------");
         System.out.printf("%5s %10s %14s\n", "Course", "Grade", "Credit Hours");
         System.out.println("--------------------------------");
         System.out.printf("%5s %7s %11d\n", courses[0], grades[0], credits[0]);
         System.out.printf("%4s %11s %10d\n", courses[1], grades[1], credits[1]);
-        System.out.printf("%5s %7s %11d\n", courses[2], grades[2], credits[2]);
-        System.out.printf("%9s %6s %10d\n", courses[3], grades[3], credits[3]);
+        System.out.printf("%5s %8s %10d\n", courses[2], grades[2], credits[2]);
+        System.out.printf("%9s %5s %11d\n", courses[3], grades[3], credits[3]);
         System.out.printf("%7s %8s %10d\n", courses[4], grades[4], credits[4]);
+        System.out.println();
     }
 
+    // Method to calculate total amount of credits the student is taking
     public static int computeSumOfCredits(int[] credits) {
 
         int sumOfCredits = 0;
@@ -54,13 +91,11 @@ public class DouglasJoshuaAssignment8 {
         }
 
         return sumOfCredits;
-
     }
 
-    public static double computerTotalGradePoints(String[] grades, int[] credits) {
-
-        double totalGradePoints = 0.0;
-
+    // Method that utilizes a switch statement to convert the letter grade (A) to its number value (4.0)
+    public static double convertLetterGradeToPoints(String grade) {
+        
         final double GRADE_A = 4.0;
         final double GRADE_A_MINUS = 3.7;
         final double GRADE_B_PLUS = 3.3;
@@ -74,50 +109,123 @@ public class DouglasJoshuaAssignment8 {
         final double GRADE_D_MINUS = 0.7;
         final double GRADE_F = 0.0;
 
-        for (int i = 0; i < credits.length; i++) {
+        double gradeInPoitns = 0.0;
 
-            switch (grades[i]) {
+        switch (grade) {
 
-                case "A":
-                    totalGradePoints += (credits[i] * GRADE_A);
+             case "A":
+                    gradeInPoitns = GRADE_A;
                     break;
                 case "A-":
-                    totalGradePoints += (credits[i] * GRADE_A_MINUS);
+                    gradeInPoitns = GRADE_A_MINUS;
                     break;
                 case "B+":
-                    totalGradePoints += (credits[i] * GRADE_B_PLUS);
+                    gradeInPoitns = GRADE_B_PLUS;
                     break;
                 case "B":
-                    totalGradePoints += (credits[i] * GRADE_B);
+                    gradeInPoitns = GRADE_B;
                     break;
                 case "B-":
-                    totalGradePoints += (credits[i] * GRADE_B_MINUS);
+                    gradeInPoitns = GRADE_B_MINUS;
                     break;
                 case "C+":
-                    totalGradePoints += (credits[i] * GRADE_C_PLUS);
+                    gradeInPoitns = GRADE_C_PLUS;
                     break;
                 case "C":
-                    totalGradePoints += (credits[i] * GRADE_C);
+                    gradeInPoitns = GRADE_C;
                     break;
                 case "C-":
-                    totalGradePoints += (credits[i] * GRADE_C_MINUS);
+                    gradeInPoitns = GRADE_C_MINUS;
                     break;
                 case "D+":
-                    totalGradePoints += (credits[i] * GRADE_D_PLUS);
+                    gradeInPoitns = GRADE_D_PLUS;
                     break;
                 case "D":
-                    totalGradePoints += (credits[i] * GRADE_D);
+                    gradeInPoitns = GRADE_D;
                     break;
                 case "D-":
-                    totalGradePoints += (credits[i] * GRADE_D_MINUS);
+                    gradeInPoitns = GRADE_D_MINUS;
                     break;
                 case "F":
-                    totalGradePoints += (credits[i] * GRADE_F  );
+                    gradeInPoitns = GRADE_F;
                     break;
-            }
         }
-        return totalGradePoints;
+        return gradeInPoitns;
     }
 
+    // Method to calculate the total grade points by calling on convertLetterGradeToPoints
+    public static double computeTotalGradePoints(String[] grades, int[] credits) {
 
+        double totalGradePoints = 0.0;
+
+        for (int i = 0; i < credits.length; i++) {
+
+            totalGradePoints += (convertLetterGradeToPoints(grades[i]) * credits[i]);
+            }
+
+        return totalGradePoints;
+        }
+
+    // Method to find the highest letter grade and return the array index of the highest grade   
+    public static int findGradeWorthMostPoints(String[] grades, int[] credits) {
+
+        int gradeWorthMostPoints = 0;
+
+        double highestGrade = 0.0;
+
+        for (int i = 0; i < grades.length; i++) {
+
+             double tempGrade = convertLetterGradeToPoints(grades[i]) * credits[i];
+             
+             if (tempGrade > highestGrade) {
+
+                highestGrade = tempGrade;
+                gradeWorthMostPoints = i;
+             }
+        }
+        return gradeWorthMostPoints;
+    } 
+
+    // Method to manipulate the dog objects and display it to the user
+    public static void makeDogsBark(Dog[] dogArray) {
+
+        System.out.println("Making the dogs bark!");
+        System.out.println("-----------------------");
+
+        for(int i = 0; i <= 4; i++) {
+
+            String dogsName = dogArray[i].getName();
+            String dogsBark = dogArray[i].getBark();
+
+            System.out.println(dogsName + " barks like this: " + dogsBark);
+            System.out.println();
+        }
+    }
+
+}
+
+class Dog {
+    private String name;
+    private String bark;
+
+    public Dog(String name, String bark) {
+        this.name = name;
+        this.bark = bark;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBark() {
+        return bark;
+    }
+
+    public void setBark(String bark) {
+        this.bark = bark;
+    }
 }
