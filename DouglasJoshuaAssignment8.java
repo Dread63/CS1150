@@ -1,7 +1,19 @@
+/*
+* Name: Joshua Douglas
+* Class: CS1150 - 002
+* Assignment #8
+* Due Date: Oct 25, 2023
+* Description: This program is a GPA calculators that is designed to explore arrays and their various uses in java. 
+* Using three arrays (courseNames, letterGrades, and creditHours) to display the course, corresponding credit hours,
+* and grades. This program includes methods that manipulate the data in the arrays to calculate and display the total
+* amount of credits taken, the total grade points, the GPA of the given student, and the grade worth the most
+* amount of points. Lastly, this program uses the "dog" class and manipulates the methods inside it to explore
+* objects and their various uses.
+*/
 public class DouglasJoshuaAssignment8 {
     public static void main(String[] args) {
         
-        // Initializing arrays and array data to be used throughout program
+        // Initializing arrays and storing data in them to be used throughout program
         String[] courseNames = new String[5];
         String[] letterGrades = new String[5];
         int[] creditHours = new int[5];
@@ -24,7 +36,7 @@ public class DouglasJoshuaAssignment8 {
         creditHours[3] = 3;
         creditHours[4] = 3;
 
-        // Calling on display results which will print the entire output for the user
+        // Calling on display which will print the coursenames, grades, and credit hours in order
         display(courseNames, letterGrades, creditHours);
 
         // Calling on methods to calculate data and store the returned value in variables
@@ -34,7 +46,8 @@ public class DouglasJoshuaAssignment8 {
 
         double totalGPA = totalGradePoints / sumOfCredits;
 
-        String gradeWorthMostPoints = "" + courseNames[findGradeWorthMostPoints(letterGrades, creditHours)] + " " + letterGrades[findGradeWorthMostPoints(letterGrades, creditHours)];
+        String gradeWorthMostPoints = "" + courseNames[findGradeWorthMostPoints(letterGrades, creditHours)] 
+        + " " + letterGrades[findGradeWorthMostPoints(letterGrades, creditHours)];
         
         // Displaying the output of the calculated data
         System.out.println("Total Credits: " + sumOfCredits);
@@ -66,17 +79,17 @@ public class DouglasJoshuaAssignment8 {
         makeDogsBark(dogArray);
     }
 
-    // This method displays the courses, grades, credit hours, then it calls on other methods to calculate total credits, total grade points, highest grade, and GPA
+    // For each course, display the course name, grade, and credits
     public static void display(String[] courses, String[] grades, int[] credits) {
 
         System.out.println("--------------------------------");
         System.out.printf("%5s %10s %14s\n", "Course", "Grade", "Credit Hours");
         System.out.println("--------------------------------");
-        System.out.printf("%5s %7s %11d\n", courses[0], grades[0], credits[0]);
-        System.out.printf("%4s %11s %10d\n", courses[1], grades[1], credits[1]);
-        System.out.printf("%5s %8s %10d\n", courses[2], grades[2], credits[2]);
-        System.out.printf("%9s %5s %11d\n", courses[3], grades[3], credits[3]);
-        System.out.printf("%7s %8s %10d\n", courses[4], grades[4], credits[4]);
+
+        for (int i = 0; i < courses.length; i++) {
+            System.out.printf("%-13s %-7s %5d\n", courses[i], grades[i], credits[i]);
+        }
+
         System.out.println();
     }
 
@@ -109,51 +122,51 @@ public class DouglasJoshuaAssignment8 {
         final double GRADE_D_MINUS = 0.7;
         final double GRADE_F = 0.0;
 
-        double gradeInPoitns = 0.0;
+        double gradeInPoints = 0.0;
 
         switch (grade) {
 
              case "A":
-                    gradeInPoitns = GRADE_A;
+                    gradeInPoints = GRADE_A;
                     break;
                 case "A-":
-                    gradeInPoitns = GRADE_A_MINUS;
+                    gradeInPoints = GRADE_A_MINUS;
                     break;
                 case "B+":
-                    gradeInPoitns = GRADE_B_PLUS;
+                    gradeInPoints = GRADE_B_PLUS;
                     break;
                 case "B":
-                    gradeInPoitns = GRADE_B;
+                    gradeInPoints = GRADE_B;
                     break;
                 case "B-":
-                    gradeInPoitns = GRADE_B_MINUS;
+                    gradeInPoints = GRADE_B_MINUS;
                     break;
                 case "C+":
-                    gradeInPoitns = GRADE_C_PLUS;
+                    gradeInPoints = GRADE_C_PLUS;
                     break;
                 case "C":
-                    gradeInPoitns = GRADE_C;
+                    gradeInPoints = GRADE_C;
                     break;
                 case "C-":
-                    gradeInPoitns = GRADE_C_MINUS;
+                    gradeInPoints = GRADE_C_MINUS;
                     break;
                 case "D+":
-                    gradeInPoitns = GRADE_D_PLUS;
+                    gradeInPoints = GRADE_D_PLUS;
                     break;
                 case "D":
-                    gradeInPoitns = GRADE_D;
+                    gradeInPoints = GRADE_D;
                     break;
                 case "D-":
-                    gradeInPoitns = GRADE_D_MINUS;
+                    gradeInPoints = GRADE_D_MINUS;
                     break;
                 case "F":
-                    gradeInPoitns = GRADE_F;
+                    gradeInPoints = GRADE_F;
                     break;
         }
-        return gradeInPoitns;
+        return gradeInPoints;
     }
 
-    // Method to calculate the total grade points by calling on convertLetterGradeToPoints
+    // Calculating and returning the total points for each grade in array letterGrades
     public static double computeTotalGradePoints(String[] grades, int[] credits) {
 
         double totalGradePoints = 0.0;
@@ -166,7 +179,7 @@ public class DouglasJoshuaAssignment8 {
         return totalGradePoints;
         }
 
-    // Method to find the highest letter grade and return the array index of the highest grade   
+    // Finding the highest letter grade and returning the array index of the highest grade   
     public static int findGradeWorthMostPoints(String[] grades, int[] credits) {
 
         int gradeWorthMostPoints = 0;
@@ -204,6 +217,7 @@ public class DouglasJoshuaAssignment8 {
 
 }
 
+// Dog class provided by proffessor Mickey
 class Dog {
     private String name;
     private String bark;
