@@ -76,17 +76,17 @@ public class DouglasJoshuaAssignment9 {
         int sum1 = 0;
         int sum2 = 0;
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) { // Sum of the numbers in the actual array
             sum1 += array[i];
         }
 
-        for (int i = lower; i <= upper; i++) {
+        for (int i = lower; i <= upper; i++) { // Sum of the numbers in the theoretical full array (1-30, 15-25 etc)
             sum2 += i;
         }
 
         missingNumber = sum2 - sum1;
 
-        if(missingNumber == 0) {
+        if (missingNumber == 0) { // Checking to see if there are no missing numbers
             missingNumber = -1;
         }
 
@@ -96,7 +96,7 @@ public class DouglasJoshuaAssignment9 {
     // Calling on previous methods to manipulate data and display the given array and it's missing number
     public static void runTest(int testNum, int lower, int upper, int[] firstArray, int[] secondArray) {
 
-        System.out.println("-----------------------");
+        System.out.println("-------------------------");
         System.out.println("Combined Test Array #" + testNum);
         System.out.println("-------------------------");
 
