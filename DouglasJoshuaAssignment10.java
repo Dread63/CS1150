@@ -1,3 +1,14 @@
+/*
+* Name: Joshua Douglas
+* Class: CS1150 - 002
+* Assignment #10
+* Due Date: Nov 8, 2023
+* Description: This program is designed to create and manipulate multiple objects. The book objects include a
+* title, author, and page count. After creating the books, it will place them in an array before displaying the
+* details of the books in a nicely formatted table for the user. In the second part of the code, a Library object
+* is created in which the book objects from the array are placed. The program will print the status of whether a
+* book was added, and it will print the smallest book in the Library. 
+*/
 public class DouglasJoshuaAssignment10 {
     public static void main(String[] args) {
 
