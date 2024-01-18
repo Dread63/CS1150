@@ -1,0 +1,154 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Chapter2",
+            "request": "launch",
+            "mainClass": "Chapter2",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "Chapter3",
+            "request": "launch",
+            "mainClass": "Chapter3",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "Chapter4",
+            "request": "launch",
+            "mainClass": "Chapter4",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "Chapter5",
+            "request": "launch",
+            "mainClass": "Chapter5",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "Chapter6",
+            "request": "launch",
+            "mainClass": "Chapter6",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "Chapter7",
+            "request": "launch",
+            "mainClass": "Chapter7",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "DouglasJoshuaAssignment1",
+            "request": "launch",
+            "mainClass": "DouglasJoshuaAssignment1",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "DouglasJoshuaAssignment10",
+            "request": "launch",
+            "mainClass": "DouglasJoshuaAssignment10",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "DouglasJoshuaAssignment11",
+            "request": "launch",
+            "mainClass": "DouglasJoshuaAssignment11",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "DouglasJoshuaAssignment2",
+            "request": "launch",
+            "mainClass": "DouglasJoshuaAssignment2",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "DouglasJoshuaAssignment3",
+            "request": "launch",
+            "mainClass": "DouglasJoshuaAssignment3",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "DouglasJoshuaAssignment4",
+            "request": "launch",
+            "mainClass": "DouglasJoshuaAssignment4",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "DouglasJoshuaAssignment5",
+            "request": "launch",
+            "mainClass": "DouglasJoshuaAssignment5",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "DouglasJoshuaAssignment6",
+            "request": "launch",
+            "mainClass": "DouglasJoshuaAssignment6",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "DouglasJoshuaAssignment7",
+            "request": "launch",
+            "mainClass": "DouglasJoshuaAssignment7",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "DouglasJoshuaAssignment8",
+            "request": "launch",
+            "mainClass": "DouglasJoshuaAssignment8",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "DouglasJoshuaAssignment9",
+            "request": "launch",
+            "mainClass": "DouglasJoshuaAssignment9",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "DouglasJoshuaAssignmnet12",
+            "request": "launch",
+            "mainClass": "DouglasJoshuaAssignmnet12",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "MidtermExam",
+            "request": "launch",
+            "mainClass": "MidtermExam",
+            "projectName": "CS1150"
+        },
+        {
+            "type": "java",
+            "name": "QuizReview2",
+            "request": "launch",
+            "mainClass": "QuizReview2",
+            "projectName": "CS1150"
+        }
+    ]
+}
